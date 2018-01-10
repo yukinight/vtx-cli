@@ -11,6 +11,7 @@
     "production": {
       "extraBabelPlugins": [
         "transform-runtime",
+        "transform-remove-console",
         ["import", { "libraryName": "antd", "libraryDirectory": "lib", "style": "css" }]
       ]
     }
