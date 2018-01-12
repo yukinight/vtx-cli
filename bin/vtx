@@ -8,7 +8,7 @@ const join = require('path').join;
 const exists = require('fs').existsSync;
 
 if (process.argv.slice(2).join('') === '-v') {
-  console.log('dva-cli: ' + require('../package').version);
+  console.log('vtx-cli: ' + require('../package').version);
   return;
 }
 
