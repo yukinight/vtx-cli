@@ -2,8 +2,15 @@
 
 # vtx-cli
 
-
-CLI for [dva](https://github.com/dvajs/dva) .
+相比于[dva-cli](https://github.com/dvajs/dva), vtx-cli做了如下改动：
+1. 默认增加css分割工具以兼容IE；
+2. 默认导入 ant-ui 和 [vtx-ui](https://www.npmjs.com/package/vtx-ui) 两个ui库；
+3. 打包出的文件将自动去除所有console语句，避免IE出问题；
+4. 新增两种打包命令：
+    npm run buildD：打包后的index.js无压缩，便于调试；
+    npm run buildV：增加js版本号增量，打包以后自动添加最新版本号，客户端无需清除缓存来更新js；
+5. 新建工程分为有地图版本和无地图版本，请自行选择修改public目录下的html文件;
+6. 修改原有工程少量文件及结构。
 
 ## Getting Started
 
