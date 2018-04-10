@@ -1,10 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "start": "cross-env BROWSER=none DISABLE_ESLINT=1 roadhog dev",
-    "build": "cross-env DISABLE_ESLINT=1 roadhog build",
-    "buildV": "cross-env DISABLE_ESLINT=1 roadhog build && node version.control.js",
-    "buildD": "cross-env NO_COMPRESS=1 DISABLE_ESLINT=1 roadhog build",
+    "start": "cross-env BROWSER=none ESLINT=none roadhog dev",
+    "build": "cross-env ESLINT=none roadhog build",
+    "buildV": "cross-env ESLINT=none roadhog build && node version.control.js",
+    "buildD": "cross-env NO_COMPRESS=none ESLINT=none roadhog build",
     "lint": "eslint --ext .js src test",
     "precommit": "npm run lint"
   },
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "dva": "^2.1.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
     "antd": "^2.13.11",
     "vtx-ui": "*"
   },

@@ -283,3 +283,36 @@ export const VtxUtil = {
         return na;
     }
 }
+
+/*
+    前后端数据转换处理工具
+    -----demo-----
+    const carDataMapProcessor = new DataMapProcessor(DataMap);
+    const new_data = carDataMapProcessor.getMappingData(yourData);
+ */ 
+export class DataMapProcessor {
+    constructor(mapping){
+        this.mapping = mapping;
+        this.reverseMap = this.getReverseMap(mapping);
+    }
+    getReverseMap(mapping){
+        let new_map = {};
+        for(let k in mapping){
+            new_map[mapping[k]] = k;
+        }
+        return new_map;
+    }
+    getMappingData(data,reverse = false){
+        let new_date = {};
+        let mapping = reverse?this.reverseMap:this.mapping;
+        for(let k in data){
+            if(k in mapping){
+                new_date[mapping[k]] = data[k];
+            }
+            else{
+                new_date[k] = data[k];
+            }
+        }
+        return new_date;
+    }
+}

@@ -9,15 +9,26 @@ import {VtxUtil} from './util';
             } 
 */
 export default function request(url, options={}) {
+    let postData = {};
     let qstr = {
         tenantId: VtxUtil.getUrlParam('tenantId'),
         userId: VtxUtil.getUrlParam('userId'),
+    }
+    if(options.body){   
+        for(let k in options.body){
+            if(typeof options.body[k]=='object' &&  options.body[k]!==null){
+                postData[k] = JSON.stringify(options.body[k]);
+            }
+            else{
+                postData[k] = options.body[k];
+            }
+        }
     }
     let ajaxPropmise = new Promise((resolve, reject) => {
         $.ajax({
             type: options.method || 'get',
             url: `${url}?${$.param(qstr)}`,
-            data: options.body || null,
+            data: postData,
             dataType: 'json',
             success: function (data) {
                 resolve(data);
@@ -46,7 +57,7 @@ export function requestJson(url, options={}) {
         tenantId: VtxUtil.getUrlParam('tenantId'),
         userId: VtxUtil.getUrlParam('userId'),
     }
-    if (options && options.urlQuery) {
+    if(options && options.urlQuery) {
         qstr = {
             ...qstr,
             ...options.urlQuery
