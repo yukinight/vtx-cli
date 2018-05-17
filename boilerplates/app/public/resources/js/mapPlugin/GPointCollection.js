@@ -76,7 +76,7 @@
                     this.drawRhombus(this.pixels[i][0],this.pixels[i][1]);
                 }
             break;
-            case 'waterrdrop':
+            case 'waterdrop':
                 //绘制海量点
                 for(var i = 0; i < this.pixels.length ; i++){
                     this.drawWaterDrop(this.pixels[i][0],this.pixels[i][1]);
