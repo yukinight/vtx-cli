@@ -178,7 +178,7 @@
     //绘制水滴
     PointCollection.prototype.drawWaterDrop= function (x,y) {
         //图片位置是单独的 不影响画布其他位置
-        this.context.drawImage(img,x+5,y-13,10,13);
+        this.context.drawImage(img,x-5,y-13,10,13);
     }
     //返回图形的大小
     function matchingSize(size){
