@@ -17,6 +17,7 @@
         this.width = 300;
         this.height = 300;
         this.pixels = pixels || [];
+        this.mapId = '';
         this.initialize(opts);
         this.setPixels(pixels);
         //canvas对象
@@ -27,7 +28,7 @@
         cvs.style.top = '0px';
         cvs.style.left = '0px';
         //添加到地图中创建的dom中
-        $('#vtx_gmap_html_pointCollection').append(cvs);
+        $('#'+(this.mapId?(this.mapId+'_'):'')+'vtx_gmap_html_pointCollection').append(cvs);
         //获取画笔对象
         this.context = cvs.getContext("2d");
         return this;
@@ -43,6 +44,7 @@
         //宽高
         this.width = opts.width || this.width;
         this.height = opts.height || this.height;
+        this.mapId = opts.mapId || this.mapId;
     }
     PointCollection.prototype.setPixels = function (pixels){
         //位置
