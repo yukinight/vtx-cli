@@ -736,7 +736,7 @@
             this._div.style.left = left + "px";
         }
      }
-     HeatmapOverlay.prototype.initialize = function(map) {
+     HeatmapOverlay.prototype.initialize = function(map,id) {
          
          this._map = map;
          var el = document.createElement("div");
@@ -752,7 +752,7 @@
          if(!isSupportCanvas()){//判断是否支持Canvas.
              return el;
          }
-         $('#vtx_gmap_html_points').after(el);
+         $('#'+(id?(id+'_'):'')+'vtx_gmap_html_points').after(el);
          // map._layerDivs.layer0.parentElement.appendChild(el);
          this.heatmap = gish337.create(this.conf);
          this._div = el;
