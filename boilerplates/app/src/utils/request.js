@@ -30,6 +30,7 @@ export default function request(url, options={}) {
             url: `${url}?${$.param(qstr)}`,
             data: postData,
             dataType: 'json',
+            cache:false,
             success: function (data) {
                 resolve(data);
             },
@@ -71,6 +72,7 @@ export function requestJson(url, options={}) {
             data: options.body ? JSON.stringify(options.body) : '',
             contentType: 'application/json;charset=UTF-8',
             dataType: 'json',
+            cache:false,
             success: function (data) {
                 resolve(data);
             },
