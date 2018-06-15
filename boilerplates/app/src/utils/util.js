@@ -215,7 +215,7 @@ export const VtxUtil = {
      */
     getUrlParam(key) {
         let paramObj = {};
-        let matchList = window.location.hash.match(/([^\?&]+)=([^&]+)/g) || [];
+        let matchList = window.location.href.match(/([^\?&]+)=([^&]+)/g) || [];
         for (let i = 0, len = matchList.length; i < len; i++) {
             let r = matchList[i].match(/([^\?&]+)=([^&]+)/);
             paramObj[r[1]] = r[2];
