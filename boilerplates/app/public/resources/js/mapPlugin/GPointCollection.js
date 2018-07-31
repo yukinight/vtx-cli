@@ -5,7 +5,11 @@
     var img = new Image();
     img.src = 'http://api0.map.bdimg.com/images/point-collection/red-marker-10x13.png';
     img.style.display = 'none';
-    document.body.append(img);
+    if(document.body.append){
+        document.body.append(img);
+    }else{
+        document.body.appendChild(img);
+    }
     var PointCollection  = GMapLib.PointCollection = function (pixels,opts) {
         //大小
         this.size = matchingSize('small');
