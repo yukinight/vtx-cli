@@ -38,12 +38,12 @@ function init({ demo, install }) {
     .on('end', function() {
       info('rename', 'gitignore -> .gitignore');
       renameSync(join(dest, 'gitignore'), join(dest, '.gitignore'));
-      if (install) {
-        info('run', 'npm install');
-        require('./install')(printSuccess);
-      } else {
+      // if (install) {
+      //   info('run', 'npm install');
+      //   require('./install')(printSuccess);
+      // } else {
         printSuccess();
-      }
+      // }
     })
     .resume();
 
