@@ -3,7 +3,6 @@
   "scripts": {
     "start": "cross-env BROWSER=none ESLINT=none roadhog dev",
     "build": "cross-env ESLINT=none roadhog build",
-    "buildV": "cross-env ESLINT=none roadhog build && node version.control.js",
     "buildD": "cross-env NO_COMPRESS=none ESLINT=none roadhog build",
     "lint": "eslint --ext .js src test"
   },
@@ -12,11 +11,14 @@
   },
   "dependencies": {
     "dva": "^2.1.0",
+    "dva-loading": "^2.0.5",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
     "antd": "^2.13.11",
     "vtx-ui": "latest",
     "immutable":"^3.8.2",
+    "lodash": "^4.17.10",
+    "updeep": "^1.0.0",
     "moment": "2.20.1"
   },
   "devDependencies": {
