@@ -13,6 +13,7 @@ export default function request(url, options={}) {
     let qstr = {
         tenantId: VtxUtil.getUrlParam('tenantId'),
         userId: VtxUtil.getUrlParam('userId'),
+        token: VtxUtil.getUrlParam('token'),
     }
     if(options.body){   
         for(let k in options.body){
@@ -57,6 +58,7 @@ export function requestJson(url, options={}) {
     let qstr = {
         tenantId: VtxUtil.getUrlParam('tenantId'),
         userId: VtxUtil.getUrlParam('userId'),
+        token: VtxUtil.getUrlParam('token'),
     }
     if(options && options.urlQuery) {
         qstr = {
@@ -66,7 +68,7 @@ export function requestJson(url, options={}) {
     }
     let ajaxPropmise = new Promise((resolve, reject) => {
         $.ajax({
-            type: 'post',
+            type: options.method || 'post',
             url: `${url}?${$.param(qstr)}`,
             // data:options.body,
             data: options.body ? JSON.stringify(options.body) : '',
