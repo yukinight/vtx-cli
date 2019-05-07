@@ -4,6 +4,11 @@
     "template": "./public/index.ejs"
   },
   "hash":true,
+  "commons": [{
+    "children": true,
+    "async": "common",
+    "minChunks": 6
+  }],
   "proxy": {
     "/api": {
       "target": "http://jsonplaceholder.typicode.com/",
