@@ -1,15 +1,17 @@
 var webpack = require('webpack');
-var path = require('path');
 var CSSSplitWebpackPlugin = require('css-split-webpack-plugin/dist/index').default;
 var ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
+// var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = function(webpackConfig, env) {
 // adding plugins to your configuration
+    // css文件分割（For IE）
     webpackConfig.plugins.push( 
         new CSSSplitWebpackPlugin({
             size: 3000
         })
     )
+    // 代码压缩
     webpackConfig.plugins = webpackConfig.plugins.filter(function(plugin) {
         return !(plugin instanceof webpack.optimize.UglifyJsPlugin);
     });
@@ -22,14 +24,9 @@ module.exports = function(webpackConfig, env) {
             warnings: false,
         },
         cacheDir: './.cache'
-      }));
-
-    // 指定包路径
-    function setAlias(pkgName){
-        webpackConfig.resolve.alias[pkgName] = path.dirname(require.resolve(`${pkgName}/package.json`));        
-    }
-    setAlias('history');
-    setAlias('moment');
+    }));
+    // 打包分析工具
+    // webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 
     return webpackConfig
 }
