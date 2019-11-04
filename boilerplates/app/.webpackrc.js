@@ -18,6 +18,7 @@ export default {
     ["import", {"libraryName": "lodash", "libraryDirectory": "", "camel2DashComponentName": false}, "lodash"]
   ],
   "hash":true,
+  ignoreMomentLocale:true,
   commons: [{
     async: "common",
     children: true,
