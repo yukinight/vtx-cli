@@ -284,13 +284,16 @@ export const VtxUtil = {
     }
 }
 
+
 /*
     前后端数据转换处理工具
     -----demo-----
-    const carDataMapProcessor = new DataMapProcessor(DataMap);
-    const new_data = carDataMapProcessor.getMappingData(yourData);
+    const yourMapping = {a:'b'}; // 映射关系：原始key为a，转换后key替换为b
+    const rawData = {a:100,ss:500}; //原始数据（后端返回的数据）
+    const carDataConverter = new DataConverter(yourMapping);
+    const new_data = carDataConverter.getMappingData(rawData); // 结果： {b:100}
  */ 
-export class DataMapProcessor {
+export class DataConverter {
     constructor(mapping){
         this.mapping = mapping;
         this.reverseMap = this.getReverseMap(mapping);
@@ -302,14 +305,18 @@ export class DataMapProcessor {
         }
         return new_map;
     }
-    getMappingData(data,reverse = false){
+    /* 获取转换完成后的数据
+    data: 【Object】需要转换的数据
+    reverse: 【Bool】按照映射关系反向转换数据（默认正向转换）
+    filter:【Bool】是否只获取在映射关系表内的数据（true:只获取在映射关系表内的数据,false:除了转换数据保留原数据的其他属性）
+     */
+    getMappingData(data, reverse = false, filter = true){
         let new_date = {};
         let mapping = reverse?this.reverseMap:this.mapping;
         for(let k in data){
             if(k in mapping){
                 new_date[mapping[k]] = data[k];
-            }
-            else{
+            }else if(!filter){
                 new_date[k] = data[k];
             }
         }

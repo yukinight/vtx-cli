@@ -15,4 +15,7 @@ function IndexPage() {
     );
 }
 
-export default connect()(IndexPage);
+export default connect(({example,loading})=>({
+    example,
+    loading
+}))(IndexPage);

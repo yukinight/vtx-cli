@@ -18,6 +18,7 @@ export default {
     ["import", {"libraryName": "lodash", "libraryDirectory": "", "camel2DashComponentName": false}, "lodash"]
   ],
   "hash":true,
+  ignoreMomentLocale:true,
   commons: [{
     async: "common",
     children: true,
@@ -25,7 +26,7 @@ export default {
   },{
     async: "echarts",
     children: true,
-    minChunks: function(module,count) {
+    minChunks: function(module) {
       return /echarts/.test(module.context);
     }
   },{
@@ -51,7 +52,8 @@ export default {
     '@models':path.resolve(__dirname,'src','models'),
     '@routes':path.resolve(__dirname,'src','routes'),
     '@services': path.resolve(__dirname,'src','services'),
-    '@utils': path.resolve(__dirname,'src','utils')
+    '@utils': path.resolve(__dirname,'src','utils'),
+    '@assets': path.resolve(__dirname,'src','assets')
   },
   "env": {
     "development": {
