@@ -48,12 +48,7 @@ export default {
   alias:{
     history:path.dirname(require.resolve('history/package.json')),
     moment:path.dirname(require.resolve('moment/package.json')),
-    '@components':path.resolve(__dirname,'src','components'),
-    '@models':path.resolve(__dirname,'src','models'),
-    '@routes':path.resolve(__dirname,'src','routes'),
-    '@services': path.resolve(__dirname,'src','services'),
-    '@utils': path.resolve(__dirname,'src','utils'),
-    '@assets': path.resolve(__dirname,'src','assets')
+    '@src':path.resolve(__dirname,'src')
   },
   "env": {
     "development": {
